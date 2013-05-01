@@ -1,0 +1,71 @@
+Script started on February 27, 2013  1:52:59 PM EST
+mreiste@csa04 ~$ cat assignment7.c
+#include <stdio.h> // includes in this source
+                                   // the prototype for printf
+                                   
+
+unsigned char GetNthByte(int Source, int ByteCount);
+int PutNthByte(int Destination, unsigned char Byte, int ByteCount);                                
+int main( int argc, char *argv[]) // or int main() if no command line arguements
+{    
+    unsigned char result = GetNthByte(0xFACECAFE,2);
+        printf("The value used is 0xFACECAFE it equals: %x\n",result);  
+        
+        int iresult = PutNthByte(0xFACECAFE,0X00,2);
+        printf("The value used is 0xFACECAFE it equals: %x\n", iresult);        
+        
+}
+mreiste@csa04 ~$ cat GetNthByte.s
+.global GetNthByte
+
+
+GetNthByte:
+            save %sp,-800, %sp
+
+            sll %i1, 3, %i1 !multiplying 
+
+            srl %i0, %i1, %i0 !Shift input right
+
+            and %i0, 0x000000FF, %i0 ! masking
+
+          ret
+          restore
+mreiste@csa04 ~$ cat PutNthByte.s
+.global PutNthByte
+
+
+PutNthByte:
+            save %sp,-800, %sp
+
+        sll %i2,3,%l0   !# of bits to shift
+        add %l0,8,%l0   !one more byte
+
+        mov %i0,%l1     !save a copy of %i0 in %l1
+        srl %i0,%l0,%i0 !clear out the right half 
+        sll %i0,%l0,%i0 !shift back
+
+        sub %l0,8,%l0   !one less byte
+        sll %l1,%l0,%l1 !clear out the left half
+        srl %l1,%l0,%l1 !shift back
+        
+        sll %i1,%l0,%i1 !shift desired bit into place
+
+        or %i0,%i1,%i0  !add on the extra bit
+        or %i0,%l1,%i0  !add on the right half
+          
+                        
+            ret
+            restore            
+                         
+
+mreiste@csa04 ~$ gcc -c assignment7.c
+mreiste@csa04 ~$ gcc -c GetNthByte.s
+mreiste@csa04 ~$ gcc -c PutNthByte.s
+mreiste@csa04 ~$ gcc assignment7.o GetNthByte.o PutNthByte.o
+mreiste@csa04 ~$ ./a.out
+The value used is 0xFACECAFE it equals: ce
+The value used is 0xFACECAFE it equals: fa00cafe
+mreiste@csa04 ~$ exit
+exit
+
+script done on February 27, 2013  1:55:23 PM EST

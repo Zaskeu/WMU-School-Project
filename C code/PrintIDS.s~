@@ -1,0 +1,211 @@
+.global PrintIDS
+
+PrintIDS:
+	save %sp, -800, %sp
+
+	clr %l7
+loop:
+	ldub[%i0 + %l7], %l0
+
+	cmp %l0, %g0
+	be next
+	nop
+
+	cmp %l0,37
+	bne loop
+	inc %l7
+
+next:
+	mov %l7, %o1 !Move counter
+	call output
+	mov %i0 , %o0 ! Move address
+
+	cmp %l0, %g0 !Null?
+	be exit
+	nop
+
+	inc %l7
+	ldub[%i0 + %l7], %l0
+	
+	cmp %l0, 'x'
+	bne overHex
+	nop
+	
+	call hexOut
+	nop
+	
+	ba continue
+	nop
+	
+overHex:
+	cmp %l0, 'd'
+	bne overDec
+	nop
+	
+	call decOut
+	nop
+	
+	ba continue
+	nop
+	
+overDec:
+	cmp %l0, 'u'
+	bne overU
+	nop
+	
+	call uOut
+	nop
+	
+	ba continue
+	nop
+	
+overU:
+	cmp %l0, 'c'
+	bne overChar
+	nop
+	
+	call charOut
+	nop
+	
+	ba continue
+	nop
+	
+overChar:
+	cmp %l0, 's'
+	bne overStr
+	nop
+	
+	call strOut
+	nop
+	
+	ba continue
+	nop
+	
+overStr:
+	! don't forget about me!!!
+	
+hexOut:
+	save %sp, -800, %sp
+	
+	mov 4, %g1
+	mov 1, %o0
+	set hexStr, %o1
+	mov (decStr - hexStr), %o2
+	ta 0
+	
+	ret
+	restore
+
+decOut:
+	save %sp, -800, %sp
+	
+	mov 4, %g1
+	mov 1, %o0
+	set decStr, %o1
+	mov (uStr - decStr), %o2
+	ta 0
+	
+	ret
+	restore
+	
+uOut:
+	save %sp, -800, %sp
+	
+	mov 4, %g1
+	mov 1, %o0
+	set uStr, %o1
+	mov (charStr - uStr), %o2
+	ta 0
+	
+	ret
+	restore
+	
+charOut:
+	save %sp, -800, %sp
+	
+	mov 4, %g1
+	mov 1, %o0
+	set charStr, %o1
+	mov (sigStr - charStr), %o2
+	ta 0
+	
+	ret
+	restore
+	
+strOut:
+	save %sp, -800, %sp
+	
+	mov 4, %g1
+	mov 1, %o0
+	set sigStr, %o1
+	mov (IAMNOTHING - sigStr), %o2
+	ta 0
+	
+	ret
+	restore
+
+continue:
+    inc %l7    
+    add %i0, %l7, %i0
+    !dont worry about whatever goes here
+	ba loop
+    clr %l7	
+	
+output:
+	save %sp, -800, %sp
+
+	mov 4,%g1 !Write
+	mov 1,%o0 !Write to standard output
+	mov %i0, %o1 ! copy address
+
+	add %i0, %i1, %i1  !calculating length of literal
+
+	sub %i1, %i0, %i1
+
+	mov %i1, %o2
+
+	ta 0
+
+	!Write NewLine
+
+	mov 4, %g1
+	mov 1, %o0
+	set NL, %o1
+
+	mov 1, %o2 !How many bytes to write
+
+	ta 0
+
+	ret
+	restore
+
+exit:
+	ret
+	restore
+
+	.section ".data"
+NL:
+	.ascii '\n'
+	.align 4
+	
+hexStr:
+	.ascii "I'm a x."
+	
+decStr:
+	.ascii "I'm a d."
+	
+uStr:
+	.ascii "I'm a u."
+	
+charStr:
+	.ascii "I'm a c."
+	
+sigStr:
+	.ascii "I'm a s."
+	
+IAMNOTHING:
+    .byte 2,3
+	.align 4
+	
+ERROR:
+	.ascii "could not compute..."

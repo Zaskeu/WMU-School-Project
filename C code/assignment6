@@ -1,0 +1,48 @@
+Script started on February 12, 2013  2:09:30 PM EST
+mreiste@csa02 ~$ gcc -c assignment6.c
+mreiste@csa02 ~$ gcc -c countones.s
+mreiste@csa02 ~$ gcc assignment6.o countones.o
+mreiste@csa02 ~$ ./a.out
+The value used is 0x11111111 it equals: 8
+The value used is 3 it equals: 2
+mreiste@csa02 ~$ cat assignment6.c
+#include <stdio.h> // includes in this source
+				   // the prototype for printf
+				   
+				   
+int main( int argc, char *argv[]) // or int main() if no command line arguements
+{    
+	printf("The value used is 0x11111111 it equals: %x\n", countones(0x11111111));	
+	
+	printf("The value used is 3 it equals: %d\n",  countones(3));	
+}
+
+
+
+mreiste@csa02 ~$ cat countones.s
+.global countones
+
+countones:
+          save %sp,-800, %sp
+
+      clr %l0
+
+loop: and %i0, 0x00000001, %l1
+      cmp %l1,1
+      be,a count
+      inc %l0 
+
+count:
+      srl %i0,1,%i0
+      cmp %i0,0
+      bne,a loop
+      nop
+
+end:
+     mov %l0, %i0       !Falls through
+     ret
+     restore
+mreiste@csa02 ~$ exit
+exit
+
+script done on February 12, 2013  2:10:35 PM EST

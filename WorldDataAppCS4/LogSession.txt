@@ -1,0 +1,117 @@
+==============
+CodeIndex1.bin    M is5,     rootPtr is 11,      N is 22
+----5 TP's---- ----4 KV's------4DRP's--
+-1 -1 -1 -1 -1 ANN ANT APT ARE 03 04 19 01 
+-1 -1 -1 -1 -1 BOT BUG ]]] ]]] 05 02 00 00 
+18 01 09 02 06 AND ART BEG BUN 09 07 43 44 
+-1 -1 -1 -1 -1 EEK EGG FAN FAT 22 69 16 48 
+17 04 12 22 -1 DVD FIT HAT ]]] 26 11 59 00 
+-1 -1 -1 -1 -1 CAM CAT ]]] ]]] 20 21 00 00 
+-1 -1 -1 -1 -1 NOT ONE OWN RAM 49 66 13 27 
+-1 -1 -1 -1 -1 INK ITS JAM ]]] 37 60 14 00 
+-1 -1 -1 -1 -1 BAM BAT ]]] ]]] 42 41 00 00 
+08 07 21 -1 -1 JET RAT ]]] ]]] 17 35 00 00 
+03 05 10 14 -1 CON IMP SAT ]]] 18 10 06 00 
+-1 -1 -1 -1 -1 GET GIG GOT HAM 15 24 58 68 
+-1 -1 -1 -1 -1 WEB WOW WWW YES 55 54 33 61 
+15 16 20 13 19 TON USE WAN YOU 65 64 31 30 
+-1 -1 -1 -1 -1 SUN SYS TAN THE 51 38 39 08 
+-1 -1 -1 -1 -1 TWO USA ]]] ]]] 34 29 00 00 
+-1 -1 -1 -1 -1 CPU DAT DIP DOG 47 23 70 46 
+-1 -1 -1 -1 -1 ALL AMY ]]] ]]] 40 45 00 00 
+-1 -1 -1 -1 -1 YUP ZAK ZEN ZIP 56 63 32 62 
+-1 -1 -1 -1 -1 VAT VEG ]]] ]]] 52 53 00 00 
+-1 -1 -1 -1 -1 RED ROM SAM ]]] 50 28 36 00 
+-1 -1 -1 -1 -1 HIP HOP HOT ICE 25 57 12 67 
+==============
+CodeIndex2.bin    M is8,     rootPtr is 1,      N is 1
+----8 TP's---- ----7 KV's------7DRP's--
+-1 -1 -1 -1 -1 -1 -1 -1 BAR CAR DAT GET HOT RUN ZAP 12 23 34 45 56 67 78 
+==============
+CodeIndex3.bin    M is9,     rootPtr is 4,      N is 9
+----9 TP's---- ----8 KV's------8DRP's--
+-1 -1 -1 -1 -1 -1 -1 -1 -1 BUN CAM CAT CON CPU DAT DIP DOG 12 23 34 45 56 67 48 25 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 IMP INK ITS JAM ]]] ]]] ]]] ]]] 38 32 36 35 00 00 00 00 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 JET JOT JUT KIM KIT KZO ]]] ]]] 68 66 64 62 60 61 00 00 
+06 01 09 07 02 03 05 08 -1 BOX DVD GET IKE JAR LAM RAN ]]] 01 02 03 04 05 06 07 00 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 LAN LAP LIP MAN MET ]]] ]]] ]]] 41 42 43 44 46 00 00 00 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 ALL AMY AND ART ASK BAT BEG ]]] 11 22 33 37 55 54 21 00 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 GIG GOT GUY HAM HEM HUB ]]] ]]] 19 29 39 49 57 28 00 00 
+-1 -1 -1 -1 -1 -1 -1 -1 -1 RUN SAM TAN TON TOP ==============
+PROCESSING TransData 1
+QC RED
+>> 50 RED wine       49172
+[# of nodes read: 3]
+QC ZIP
+>> 62 ZIP code       49184
+[# of nodes read: 3]
+QC ALL
+>> 40 ALL for 1      49162
+[# of nodes read: 3]
+QC SAT
+>> 06 SAT awhile     49128
+[# of nodes read: 1]
+QC YOU
+>> 30 YOU & me       49152
+[# of nodes read: 2]
+QC DVD
+>> 26 DVD or CD      49148
+[# of nodes read: 2]
+QC CON
+>> 18 CON artist     49140
+[# of nodes read: 1]
+QC HAT
+>> 59 HAT & coat     49181
+[# of nodes read: 2]
+QC RAT
+>> 35 RAT you dirty  49157
+[# of nodes read: 2]
+QC AND
+>> 09 AND so on      49131
+[# of nodes read: 2]
+QC SAM
+>> 36 SAM Space      49158
+[# of nodes read: 3]
+QC BEG
+>> 43 BEG for candy  49165
+[# of nodes read: 2]
+==============
+PROCESSING TransData 2
+QC ZAP
+>> 78 ZAP a bug      78901
+[# of nodes read: 1]
+QC BAR
+>> 12 BAR none       12345
+[# of nodes read: 1]
+QC HOT
+>> 56 HOT and cold   56789
+[# of nodes read: 1]
+QC RUN
+>> 67 RUN spot run   67890
+[# of nodes read: 1]
+==============
+PROCESSING TransData 3
+QC BOX
+>> 01 BOX o bits     10001
+[# of nodes read: 1]
+QC BEG
+>> 21 BEG borrow     10021
+[# of nodes read: 2]
+QC HAM
+>> 49 HAM spam       10049
+[# of nodes read: 2]
+QC ALL
+>> 11 ALL in fun     10011
+[# of nodes read: 2]
+QC HUB
+>> 28 HUB usb        10028
+[# of nodes read: 2]
+QC RUN
+>> 10 RUN spot run   10010
+[# of nodes read: 2]
+QC IKE
+>> 04 IKE for Pres   10004
+[# of nodes read: 1]
+QC ZIP
+>> 31 ZIP per        10031
+[# of nodes read: 2]

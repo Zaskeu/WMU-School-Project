@@ -1,0 +1,76 @@
+Script started on January 28, 2013 12:40:14 PM EST
+mreiste@csa02 ~$ cat assignment2.c
+#include <stdio.h>
+
+//Mike Reisterer
+//2230
+//Assignment 2
+//Description: This program passes 2 user input values into two assembly programs, Func1 and Func2
+//Func1 handles adding the A and B (After they are doubled in Func2) together and returns Q
+//Func2 simply doubles the value and returns it to Func1
+
+int Func1(int A, int B);
+
+int main( int argc, char *argv[]) // or int main() if no command line arguements
+{
+                int A = 0; //Input
+                int B = 0; // Input
+                int Q = 0; //The returned value
+                printf("Please Input 2 values"); //User inputs 2 values
+                fscanf(stdin,"%d %d",&A,&B); 
+                
+                if(A < 0 || B < 0)
+                {
+                        printf("ERROR: No negative numbers please :)");
+                }
+                else
+                {
+                Q = Func1(A,B);
+                }
+                
+                printf("Value returned is %d \n",Q);
+
+
+}
+
+mreiste@csa02 ~$ cat Func1.s
+
+    .global Func1 ! "assembler directive"
+Func1:    save  %sp,-800, %sp ! machine instruction 
+    
+    mov %i0,%o0
+    call Func2 ! A
+    nop
+
+    mov %o0,%i0 ! stores A
+
+    mov %i1,%o0 ! stores B for Func2 call
+
+    call Func2 ! B
+    nop
+
+    add %i0, %o0, %i0 ! Adds a doubled A and B together 
+ 
+    ret  
+    restore
+mreiste@csa02 ~$ cat Func2.s
+.global Func2 ! "assembler directive"
+Func2:    save  %sp,-800, %sp ! machine instruction
+    
+    add %i0, %i0, %i0 ! Doubles the value    
+    
+    ret 
+  
+    restore
+mreiste@csa02 ~$ gcc -c assignment2.c
+mreiste@csa02 ~$ gcc -c Func1.s
+mreiste@csa02 ~$ gcc -c Func2.s
+mreiste@csa02 ~$ gcc assignment2.o Func1.o Func2.o
+mreiste@csa02 ~$ ./a.out
+Please Input 2 values 5
+10
+Value returned is 30 
+mreiste@csa02 ~$ exit
+exit
+
+script done on January 28, 2013 12:41:40 PM EST

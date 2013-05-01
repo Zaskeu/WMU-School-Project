@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorldDataAppCS4", "WorldDataAppCS4\WorldDataAppCS4.csproj", "{35475AE1-73C2-4421-A580-E1413AB013F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempSetupUtility", "TempSetupUtility\TempSetupUtility.csproj", "{6803982B-F462-4063-90BB-229F553462B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempUserApp", "TempUserApp\TempUserApp.csproj", "{0850CF35-8282-489A-9C31-97D6597A5283}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{35475AE1-73C2-4421-A580-E1413AB013F2}.Debug|x86.ActiveCfg = Debug|x86
+		{35475AE1-73C2-4421-A580-E1413AB013F2}.Debug|x86.Build.0 = Debug|x86
+		{35475AE1-73C2-4421-A580-E1413AB013F2}.Release|x86.ActiveCfg = Release|x86
+		{35475AE1-73C2-4421-A580-E1413AB013F2}.Release|x86.Build.0 = Release|x86
+		{6803982B-F462-4063-90BB-229F553462B8}.Debug|x86.ActiveCfg = Debug|x86
+		{6803982B-F462-4063-90BB-229F553462B8}.Debug|x86.Build.0 = Debug|x86
+		{6803982B-F462-4063-90BB-229F553462B8}.Release|x86.ActiveCfg = Release|x86
+		{6803982B-F462-4063-90BB-229F553462B8}.Release|x86.Build.0 = Release|x86
+		{0850CF35-8282-489A-9C31-97D6597A5283}.Debug|x86.ActiveCfg = Debug|x86
+		{0850CF35-8282-489A-9C31-97D6597A5283}.Debug|x86.Build.0 = Debug|x86
+		{0850CF35-8282-489A-9C31-97D6597A5283}.Release|x86.ActiveCfg = Release|x86
+		{0850CF35-8282-489A-9C31-97D6597A5283}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

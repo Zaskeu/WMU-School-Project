@@ -1,0 +1,88 @@
+Script started on February 11, 2013  4:41:47 PM EST
+mreiste@csa02 ~$ make
+gcc -c assignment5.c
+gcc -c Greatest.s
+gcc -c BiggestUnsigned.s
+gcc -c BiggestUnsignedV.s
+gcc assignment5.o Greatest.o BiggestUnsigned.o BiggestUnsignedV.o
+mreiste@csa02 ~$ ./a.out
+Value returned is 3 
+Value returned is ffffffff 
+Value returned is 80000000 
+mreiste@csa02 ~$ cat assignment5.c
+#include <stdio.h> // includes in this source
+				   // the prototype for printf
+				   
+				   
+int main( int argc, char *argv[]) // or int main() if no command line arguements
+{  
+    int CFlag = 0;	
+	int VFlag = 0;	
+	int X = 1;
+	int Y = 2;
+	int Z = 3;	
+	
+	printf("Value returned is %d \n", Greatest(X,Y,Z));	
+	
+	printf("Value returned is %x \n",  BiggestUnsigned(CFlag));	
+	
+	printf("Value returned is %x \n", BiggestUnsignedV(VFlag));	
+
+	
+}
+
+mreiste@csa02 ~$ cat Greatest.s
+.global Greatest
+Greatest: save %sp, -800, %sp
+!Credit to Dan for this(Thanks!)
+	cmp %i0, %i1
+        bl,a cont
+        mov %i1, %i0
+cont: 
+        cmp %i0, %i2
+        bl,a end
+        mov %i2, %i0
+          
+end:
+        ret
+        restore
+		
+mreiste@csa02 ~$ cat BiggestUnsigned.s
+	.global BiggestUnsigned
+BiggestUnsigned: 
+	save %sp, -800, %sp
+	
+loop: 
+	addcc %i0,1,%i0
+       	bcs,a away ! if done
+        mov %i1, %i0
+              
+       	mov %i0, %i1
+
+        ba loop
+        nop
+
+away:
+       	ret
+        restore
+              
+mreiste@csa02 ~$ cat BiggestUnsignedV.s
+           .global BiggestUnsignedV
+BiggestUnsignedV:
+           save %sp, -800, %sp
+ loop:     
+	   subcc %i0, 1, %i0
+           bvs,a away ! if done
+           mov %i1,%i0
+	   
+	   mov %i0, %i1
+           ba loop
+           nop
+ away:
+           ret
+           restore
+ 
+mreiste@csa02 ~$ exit
+exit
+
+script done on February 11, 2013  4:43:26 PM EST

@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int ZeroToOne(char*);
+
+int main(int argc, char * argv[ ] )
+// if we called this program as 
+//    %MyExe te0string1here0
+// then argc = 2, argv[0] is address of "MyExe" , argv[1] is address of "te0string1here0"
+
+{
+    char  array[5] = {'0','1','0','2', (char) 0}; 
+//    char *array ="0102";
+//    char  * array =  "0102"; // different place in stored program 
+    int Q;
+    printf("%s\n",array);
+//    printf("%s\n",argv[1]);
+    Q= ZeroToOne(&array[1]);
+//    Q= ZeroToOne(argv[1]);
+    printf ("Number of changes = %u \n",Q);
+        printf("%s\n",array);
+    return 0;
+}
+
+________________________________________________________________________________________________
+
+!  This module takes the address of a null terminated string 
+! and changes all '0' instances to '1'
+! and the number of changes will be returned 
+        .global ZeroToOne
+ZeroToOne:
+        save %sp,-128,%sp
+                clr %l7  ! change count cleared
+                clr %l6 ! clear offset which will march 0, 1, 2,3, 
+                mov '1', %l5 ! A '1' to put in memory 
+!
+loop:   ldub [%i0 +%l6], %l0            ! load integer from array
+                                        ! using current offset 
+                
+                cmp %l0, %g0 ! is it 0 -- then we have NULL, so exit loop 
+                be,a Xit
+                mov %l7, %i0 ! return change count 
+
+                cmp %l0,'0' ! ascii 0 ? 
+                bne over
+                nop
+change:   stb %l5, [%i0 + %l6] ! put that 1 where 0 lived                         
+                inc %l7  ! count that change
+over:    
+                ba loop ! run the loop again 
+                inc %l6 ! increment offset / subscript 
+        
+Xit:           nop
+                ret
+                restore

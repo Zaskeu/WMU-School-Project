@@ -1,0 +1,69 @@
+Script started on January 29, 2013  1:04:12 PM EST
+mreiste@csa02 ~$ cat Func2.s
+.global Func2 ! "assembler directive"
+Func2:    save  %sp,-800, %sp ! machine instruction
+    
+    .word 0xB0060018 ! add %i0, %i0, %i0  Doubles the value    
+    
+    ret  ! return is a "synthetic" 
+         ! jmpl %i7, 8, %g0 
+    restore
+mreiste@csa02 ~$ cat Func2.s
+
+    .global Func1 ! "assembler directive"
+Func1:    save  %sp,-800, %sp ! machine instruction 
+    
+    mov %i0,%o0
+    call Func2 ! A
+    nop
+
+    mov %o0,%i0 ! stores A
+
+    mov %i1,%o0 ! stores B for Func2 call
+
+    call Func2 ! B
+    nop
+
+    add %i0, %o0, %i0 ! Adds a doubled A and B together 
+ 
+    ret  
+    restore
+mreiste@csa02 ~$ cat assignment2.c
+#include <stdio.h>
+
+int Func1(int A, int B);
+
+int main( int argc, char *argv[]) // or int main() if no command line arguements
+{
+		int A = 0;
+		int B = 0;
+		int Q = 0;
+		printf("Please Input 2 values"); //User inputs 2 values
+		fscanf(stdin,"%d %d",&A,&B); 
+		
+		if(A < 0 || B < 0)
+		{
+			printf("ERROR: No negative numbers please :)");
+		}
+		else
+		{
+		Q = Func1(A,B);
+		}
+		
+		printf("Value returned is %d \n",Q);
+
+
+}
+
+mreiste@csa02 ~$ gcc -c assignment2.c
+mreiste@csa02 ~$ gcc -c Func1.s
+mreiste@csa02 ~$ gcc -c Func2.s
+mreiste@csa02 ~$ gcc assignment2.o Func1.o Func2.o
+mreiste@csa02 ~$ ./a.out
+Please Input 2 values2
+3
+Value returned is 10 
+mreiste@csa02 ~$ exit
+exit
+
+script done on January 29, 2013  1:05:16 PM EST

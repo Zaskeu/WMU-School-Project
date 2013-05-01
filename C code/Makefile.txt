@@ -1,0 +1,6 @@
+build:
+	gcc -c assignment5.c
+	gcc -c Greatest.s
+	gcc -c BiggestUnsigned.s
+	gcc -c BiggestUnsignedV.s
+	gcc assignment5.o Greatest.o BiggestUnsigned.o BiggestUnsignedV.o

@@ -1,0 +1,19 @@
+#1: Up Left Right Up Down Left Up Down Down Right Right Left Right Left Up Down Left Right Up Up Down Up Down Right Down Left Right Left Right Left Left Right Up Right Up Down Down Left Right Up Down Up Up Down Up Down Left Left Right Up Down Down Left Up Up Right Left Down Down Right Right Up Down Up Down Left Left Up Up Right Left Right Left Down Down Right Left Right Left Right Left Right Right Left Up Right Down Left Up Right Up Left Right Left Down Down Left Up Right Right Up Down Up Left Left Right Left Down Down Up Right Down Up Left Down Right Right Left Up Down Left Right Up Down Up Right Down Up Up Down Down Left Right Up Up Left Down Up Left Down Down Up Right Up Left Down Down Up Right Left Up Right Right Left Right Left Down Left Up Right Left Down Up Right Left Down Up Down Down Right Left Up Up Right Down Right Up Left Left Down Down Right Left Right Up Down Up Right Up Left Right Down Left Up Right Left Right Left Right Down Down Left Right Up Up Down Left Down Right Left Up Down Up Left Right Down Up Left Right Up Right Down Up Down Down Left Left Up Up Right Down Up Left Right Left Down Down Up Right Up Down Down Right .....   21903
+#2: Up Up Left Down Right 5
+#3: Up Up Left Down Right 5
+
+
+
+Analysis:
+#1: Using random numbers to determine where to go is horribly inefficiant. The run time can go from 5 seconds to 5 minutes, ranging from 5 to infinity. 
+#2: By contrast going based upon number mismatched was much simpler, only requiring 5 moves and taking up much less space.
+#3: The same can be said of the distance
+
+The reasoning they were both the same, however, is due to the fact that the distance was 5 as well as the number mismatched. 
+
+Giving this program actual knowledge has proven the amazingness of computer power, with a little bit of help at the start, it can solve a puzzle all on its own.
+
+Degree of Efforts:
+1: 5-Infinity
+2: 5
+3: 5
